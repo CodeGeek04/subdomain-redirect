@@ -9,12 +9,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 ) => ({ props: { host: context.req.headers.host || null } });
 
 const Page: NextPage<Props> = ({ host }) => {
-  console.log("host", host);
-  const subdomain = host?.split(":")[0].split(".")[0];
-  if (subdomain === "localhost" || subdomain === "www") {
-    return <p> Welcome Host {subdomain}</p>;
-  }
-  return <Client host={subdomain ? subdomain : "google"} />;
+  return <p> Welcome host: {host}</p>;
 };
 
 export default Page;
